@@ -3,6 +3,7 @@
   - yaml
 :yaml:
   :datadir: /opt/config/puppet/hieradata
+:logger: puppet
 :hierarchy:
   - "%{::role}"
   - common
