@@ -8,5 +8,7 @@ node default {
     path => ["/bin", "/sbin", "/usr/bin", "/usr/sbin"],
   }
 
+  notify {"Role: $::init_role": }
+
   include puppetfirstrun
 }
