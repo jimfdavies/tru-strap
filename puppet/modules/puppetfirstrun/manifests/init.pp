@@ -11,7 +11,10 @@
 # Sample Usage:
 #
 # [Remember: No empty lines between comments and class definition]
-class puppetfirstrun { 
+class puppetfirstrun ($outputtext = $::hieratest) { 
   include puppetfirstrun::config
+ 
+  notify {$outputtext:}
+
 } 
 

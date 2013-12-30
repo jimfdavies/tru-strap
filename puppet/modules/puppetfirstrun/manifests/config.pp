@@ -6,6 +6,4 @@ class puppetfirstrun::config {
     }
 
   }
- 
-  notify {"Puppet First Run.":}
 } 
