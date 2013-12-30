@@ -11,10 +11,9 @@
 # Sample Usage:
 #
 # [Remember: No empty lines between comments and class definition]
-class puppetfirstrun ($outputtext = $::hieratest) { 
+class puppetfirstrun ($output_text = "nope Im default") {
   include puppetfirstrun::config
- 
-  notify {$outputtext:}
 
-} 
+  notify {$output_text :}
 
+}

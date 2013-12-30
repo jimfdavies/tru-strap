@@ -1,3 +1,4 @@
 ---
 testout::text: "I am from the common data source."
 hieratest: "I am straight from common."
+puppetfirstrun::output_text: "YAY Im from the common.yaml"
