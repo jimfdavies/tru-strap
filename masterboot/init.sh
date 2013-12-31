@@ -31,6 +31,7 @@ function print_help {
 
 function set_facter {
   export FACTER_$1=$2
+  puppet apply -e "file { '/etc/facter': ensure => directory, mode => 0600 }"
   puppet apply -e "file { '/etc/facter/facts.d': ensure => directory, mode => 0600 }"
   puppet apply -e "file { '/etc/facter/facts.d/$1.txt': ensure => present, mode => 0600, content => '$1=$2' }"
   echo "Facter says $1 is..."
