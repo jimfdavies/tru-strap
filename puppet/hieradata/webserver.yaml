@@ -1,2 +1,2 @@
 ---
-puppetfirstrun::output_text: "OOH Im from the webserver.yaml"
+puppetfirstrun::output_text: "I am from the webserver.yaml"

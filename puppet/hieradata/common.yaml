@@ -1,5 +1,5 @@
 ---
 classes:
   - puppetfirstrun
-puppetfirstrun::output_text: "YAY Im from the common.yaml"
+puppetfirstrun::output_text: "I am from the common.yaml"
 puppetapply::cronschedule: "0 0 0 0"
