@@ -78,12 +78,11 @@ while test -n "$1"; do
   shift
 done
 
-# # Set Local variables
 # GITHUB_PRI_KEY=<Rightscale Credential??>
 # GITHUB_PUB_KEY=<Rightscale Credential??>
 # Set Git login params
-# ?? puppet apply -v -e "file {'id_rsa.pub': path => '/root/.ssh/id_rsa.pub', ensure => present, mode => 0600, content => '$GITHUB_PUB_KEY'}"
-# ?? puppet apply -v -e "file {'id_rsa': path => '/root/.ssh/id_rsa',ensure => present, mode    => 0600, content => '$GITHUB_PRI_KEY'}"
+# puppet apply -v -e "file {'id_rsa.pub': path => '/root/.ssh/id_rsa.pub', ensure => present, mode => 0600, content => '$GITHUB_PUB_KEY'}"
+# puppet apply -v -e "file {'id_rsa': path => '/root/.ssh/id_rsa',ensure => present, mode    => 0600, content => '$GITHUB_PRI_KEY'}"
 puppet apply -e "package { 'git': ensure => present }"
 
 puppet apply -e "file { '/opt/config': ensure => absent, force => true }"
@@ -100,7 +99,7 @@ puppet apply -e "file { '/etc/hiera.yaml': ensure => link, target => '/etc/puppe
 
 # How do we download only the required external puppet modules?
 # puppet-librarian requires all modules to be separate though
-# 1. Run Puppet module that creates a Puppetfile based on Hiera parameter (required_modules)
+# 1. Create/run Puppet module that creates a Puppetfile based on Hiera parameter (required_modules)
 # 2. Run puppet-librarian
 
 # <puppet module git repo paths>
