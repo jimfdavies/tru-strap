@@ -102,10 +102,13 @@ puppet apply -e "file { '/etc/hiera.yaml': ensure => link, target => '/etc/puppe
 # 1. Create/run Puppet module that creates a Puppetfile based on Hiera parameter (required_modules)
 # 2. Run puppet-librarian
 
+# Create default Puppetfile which downloads the new librarian tweak module
+# REQUIRES the Modulefile to be absolutely spot on - gulp!
+
 # gem install librarian-puppet
 # cd /opt/config/puppet
 # librarian-puppet init
-# <Change the Puppetfile>
+# <Update the Puppetfile with required modules>
 # librarian-puppet install
 
 puppet apply --modulepath /opt/config/puppet/modules /opt/config/puppet/manifests/site.pp
