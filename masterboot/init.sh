@@ -31,6 +31,7 @@ function print_help {
 
 function set_facter {
   export FACTER_$1=$2
+  puppet apply -e "file { '/etc/facter/facts.d/$1.txt': ensure => present, mode => 0600, content => '$1=$2' }"
   echo "Facter says $1 is..."
   facter $1
 }
@@ -94,6 +95,7 @@ puppet apply -e "file { 'config': path => '/etc/config', ensure => directory, mo
 puppet apply -e "file { 'puppet.conf': path => '/etc/puppet/puppet.conf', ensure => present, mode => 0600, source => '/opt/config/puppet/puppet.conf' }"
 puppet apply -e "file { '/etc/puppet/hiera.yaml': ensure => present, mode => 0600, source => '/opt/config/puppet/hiera.yaml' }"
 puppet apply -e "file { '/etc/hiera.yaml': ensure => link, target => '/etc/puppet/hiera.yaml' }"
+puppet apply -e "file { '/etc/facter/facts.d/init_role.txt': ensure => present, mode => 0600, content => 'init_role=webserver' }"
 
 # How do we download only the required external puppet modules?
 # puppet-librarian requires all modules to be separate though
