@@ -10,5 +10,7 @@ node default {
 
   notify {"Role: $::init_role": }
 
-  include puppetfirstrun
+  hiera_include('classes')
+
+  #include puppetfirstrun
 }
