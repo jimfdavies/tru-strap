@@ -5,4 +5,3 @@ puppetfirstrun::output_text: "I am from the common.yaml"
 puppetapply::cronschedule: "0 0 0 0"
 puppetmodules:
   - puppetlabs/puppetlabs-ntp
-  s;dasdub
