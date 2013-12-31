@@ -102,14 +102,11 @@ puppet apply -e "file { '/etc/hiera.yaml': ensure => link, target => '/etc/puppe
 # 1. Create/run Puppet module that creates a Puppetfile based on Hiera parameter (required_modules)
 # 2. Run puppet-librarian
 
-# <puppet module git repo paths>
-# <Git clone Puppet modules>
-# <Apply Puppet modules>
-# Run /opt/config/puppet/modulelist.sh
-# # Iterate over list
-# # git clone
-# # puppet install module
-# # ...
+# gem install librarian-puppet
+# cd /opt/config/puppet
+# librarian-puppet init
+# <Change the Puppetfile>
+# librarian-puppet install
 
 puppet apply --modulepath /opt/config/puppet/modules /opt/config/puppet/manifests/site.pp
 
