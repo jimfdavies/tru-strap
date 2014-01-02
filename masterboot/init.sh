@@ -93,9 +93,10 @@ git clone -v https://github.com/jimfdavies/provtest-config.git /opt/config
 #git clone git@github.com:$REPOORG/$REPONAME.git /opt/config
 
 puppet apply -e "file { 'config': path => '/etc/config', ensure => directory, mode => 0600 }"
-puppet apply -e "file { 'puppet.conf': path => '/etc/puppet/puppet.conf', ensure => present, mode => 0600, source => '/opt/config/puppet/puppet.conf' }"
+puppet apply -e "file { '/etc/puppet/puppet.conf': ensure => present, mode => 0600, source => '/opt/config/puppet/puppet.conf' }"
 puppet apply -e "file { '/etc/puppet/hiera.yaml': ensure => present, mode => 0600, source => '/opt/config/puppet/hiera.yaml' }"
 puppet apply -e "file { '/etc/hiera.yaml': ensure => link, target => '/etc/puppet/hiera.yaml' }"
+puppet apply -e "file { '/etc/puppet/Puppetfile': ensure => present, mode => 0600, source => '/opt/config/puppet/Puppetfile' }"
 
 # How do we download only the required external puppet modules?
 # puppet-librarian requires all modules to be separate though
