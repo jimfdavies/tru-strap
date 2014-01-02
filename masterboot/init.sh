@@ -92,25 +92,17 @@ git clone -v https://github.com/jimfdavies/provtest-config.git /opt/config
 # PRIVATE config repository
 #git clone git@github.com:$REPOORG/$REPONAME.git /opt/config
 
-puppet apply -e "file { 'config': path => '/etc/config', ensure => directory, mode => 0600 }"
+puppet apply -e "file { '/etc/config': ensure => directory, mode => 0600 }"
 puppet apply -e "file { '/etc/puppet/puppet.conf': ensure => present, mode => 0600, source => '/opt/config/puppet/puppet.conf' }"
 puppet apply -e "file { '/etc/puppet/hiera.yaml': ensure => present, mode => 0600, source => '/opt/config/puppet/hiera.yaml' }"
 puppet apply -e "file { '/etc/hiera.yaml': ensure => link, target => '/etc/puppet/hiera.yaml' }"
 puppet apply -e "file { '/etc/puppet/Puppetfile': ensure => present, mode => 0600, source => '/opt/config/puppet/Puppetfile' }"
 
-# How do we download only the required external puppet modules?
-# puppet-librarian requires all modules to be separate though
-# 1. Create/run Puppet module that creates a Puppetfile based on Hiera parameter (required_modules)
-# 2. Run puppet-librarian
-
-# Create default Puppetfile which downloads the new librarian tweak module
-# REQUIRES the Modulefile to be absolutely spot on - gulp!
-
-# gem install librarian-puppet
-# cd /opt/config/puppet
-# librarian-puppet init
-# <Update the Puppetfile with required modules>
-# librarian-puppet install
+gem install librarian-puppet
+cd /opt/config/puppet
+librarian-puppet init
+librarian-puppet install --verbose
+librarian-puppet update --verbose
 
 puppet apply --modulepath /opt/config/puppet/modules /opt/config/puppet/manifests/site.pp
 
@@ -118,4 +110,4 @@ puppet apply --modulepath /opt/config/puppet/modules /opt/config/puppet/manifest
 # <Set crontab>
 # <puppet schedule config>
 # puppet apply -v -e "class {'puppet-schedule'}"  (New Class containing new cron getting info from Hiera including disable)
-# <Update this boot script>
+# <Get latest copy of this boot script>
