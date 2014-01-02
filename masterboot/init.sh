@@ -1,12 +1,6 @@
 #!/bin/bash
 
-# Master boot script
-# Design goals:
-# Linux (rhel/debian) and Windows versions
-# Run at command line
-# Easy to put into USERDATA
- 
-# Usage: init.sh --role web-api --environment production [--site a] --repo-org TravelSupermarket --repo-name provisioning --update true
+# Usage: init.sh --role webserver --environment prod1 --site a --repouser jimfdavies --reponame provtest-config
 
 VERSION=0.0.1
 
@@ -15,11 +9,9 @@ VERSION=0.0.1
 yum install -y http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
 yum install -y puppet
 
-# Debian
-# Cat /etc/issue cut to get version
-# wget http://apt.puppetlabs.com/puppetlabs-release-<version>.deb
-# sudo dpkg -i puppetlabs-release-<version>.deb
-# sudo apt-get update
+# TODO: Debian Puppet install
+
+# Process command line params
 
 function print_version {
   echo $1 $2
@@ -38,7 +30,6 @@ function set_facter {
   facter $1
 }
 
-# # Process command line params
 while test -n "$1"; do
   case "$1" in
   --help|-h)
@@ -61,8 +52,8 @@ while test -n "$1"; do
     set_facter init_site $2
     shift
     ;;
-  --repoorg|-o)
-    set_facter init_repoorg $2
+  --repouser|-o)
+    set_facter init_repouser $2
     shift
     ;;
   --reponame|-n)
@@ -78,9 +69,9 @@ while test -n "$1"; do
   shift
 done
 
+# Set Git login params
 # GITHUB_PRI_KEY=<Rightscale Credential??>
 # GITHUB_PUB_KEY=<Rightscale Credential??>
-# Set Git login params
 # puppet apply -v -e "file {'id_rsa.pub': path => '/root/.ssh/id_rsa.pub', ensure => present, mode => 0600, content => '$GITHUB_PUB_KEY'}"
 # puppet apply -v -e "file {'id_rsa': path => '/root/.ssh/id_rsa',ensure => present, mode    => 0600, content => '$GITHUB_PRI_KEY'}"
 puppet apply -e "package { 'git': ensure => present }"
