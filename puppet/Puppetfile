@@ -1,0 +1,4 @@
+forge "http://forge.puppetlabs.com"
+
+mod 'puppetfirstrun',
+  :git => 'git://github.com/jimfdavies/puppetfirstrun.git'
