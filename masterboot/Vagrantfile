@@ -7,37 +7,6 @@ Vagrant.configure("2") do |config|
   
   config.vm.box_url = "http://puppet/repo1/centos62-msm.box"
 
-  #config.vm.provision :shell, :path => "init.sh", :args => "--help"
-  #config.vm.provision :shell, :path => "init.sh", :args => "--version"
-  config.vm.provision :shell, :path => "init.sh", :args => "--role webserver --environment prod1 --site eu-west-1a --repoorg jimfdavies --reponame provtest-config"
+  config.vm.provision :shell, :path => "init.sh", :args => "--role webserver --environment prod1 --site eu-west-1a --repouser jimfdavies --reponame provtest-config"
 
-  #config.vm.provision :puppet do |puppet|
-  #   puppet.options = "--verbose"
-  #end
-  
-  
 end
-  
-  
-  # Enable provisioning with Puppet stand alone.  Puppet manifests
-  # are contained in a directory path relative to this Vagrantfile.
-  # You will need to create the manifests directory and a manifest in
-  # the file test1.pp in the manifests_path directory.
-  #
-  # An example Puppet manifest to provision the message of the day:
-  #
-  # # group { "puppet":
-  # #   ensure => "present",
-  # # }
-  # #
-  # # File { owner => 0, group => 0, mode => 0644 }
-  # #
-  # # file { '/etc/motd':
-  # #   content => "Welcome to your Vagrant-built virtual machine!
-  # #               Managed by Puppet.\n"
-  # # }
-  #
-  # config.vm.provision :puppet do |puppet|
-  #   puppet.manifests_path = "manifests"
-  #   puppet.manifest_file  = "test1.pp"
-  # end
