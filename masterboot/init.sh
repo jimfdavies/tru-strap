@@ -23,9 +23,9 @@ function print_help {
 
 function set_facter {
   export FACTER_$1=$2
-  puppet apply -e "file { '/etc/facter': ensure => directory, mode => 0600 }"
-  puppet apply -e "file { '/etc/facter/facts.d': ensure => directory, mode => 0600 }"
-  puppet apply -e "file { '/etc/facter/facts.d/$1.txt': ensure => present, mode => 0600, content => '$1=$2' }"
+  puppet apply -e "file { '/etc/facter': ensure => directory, mode => 0600 }" --logdest syslog
+  puppet apply -e "file { '/etc/facter/facts.d': ensure => directory, mode => 0600 }" --logdest syslog
+  puppet apply -e "file { '/etc/facter/facts.d/$1.txt': ensure => present, mode => 0600, content => '$1=$2' }" --logdest syslog
   echo "Facter says $1 is..."
   facter $1
 }
@@ -74,12 +74,12 @@ done
 # GITHUB_PUB_KEY=<Rightscale Credential??>
 # puppet apply -v -e "file {'id_rsa.pub': path => '/root/.ssh/id_rsa.pub', ensure => present, mode => 0600, content => '$GITHUB_PUB_KEY'}"
 # puppet apply -v -e "file {'id_rsa': path => '/root/.ssh/id_rsa',ensure => present, mode    => 0600, content => '$GITHUB_PRI_KEY'}"
-puppet apply -e "package { 'git': ensure => present }"
-
+puppet apply -e "package { 'git': ensure => present }" 
 puppet apply -e "file { '/opt/config': ensure => absent, force => true }"
 
 # PUBLIC config repository only
-git clone -v https://github.com/jimfdavies/provtest-config.git /opt/config
+#git clone -v https://github.com/jimfdavies/provtest-config.git /opt/config
+git clone -v https://github.com/$FACTER_init_repouser/$FACTER_init_reponame.git /opt/config
 # PRIVATE config repository
 #git clone git@github.com:$REPOORG/$REPONAME.git /opt/config
 
@@ -89,7 +89,7 @@ puppet apply -e "file { '/etc/puppet/hiera.yaml': ensure => present, mode => 060
 puppet apply -e "file { '/etc/hiera.yaml': ensure => link, target => '/etc/puppet/hiera.yaml' }"
 puppet apply -e "file { '/etc/puppet/Puppetfile': ensure => present, mode => 0600, source => '/opt/config/puppet/Puppetfile' }"
 
-gem install librarian-puppet
+gem install librarian-puppet --no-ri --no-rdoc
 cd /opt/config/puppet
 librarian-puppet install
 librarian-puppet update
