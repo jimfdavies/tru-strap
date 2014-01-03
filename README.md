@@ -46,16 +46,16 @@ We end up with configuration files that resemble the traditional nodes.pp but wi
 
 Execution
 ---------
-We start off proceedings with a shell script (see masterboot/init.sh) and some arbitrary command-line switches.
-These switches are made into external Facter facts using environment variables and also by creating external fact files.
-We then download this repository you're in now. We only want the puppet directory though really.
-We put the Puppet and Hiera config files into place and the initial Puppetfile.
-We install librarian-puppet and download the required Puppet modules.
-Finally we run puppet apply.
+* We start off proceedings with a shell script (see masterboot/init.sh) and some arbitrary command-line switches.
+* These switches are made into external Facter facts using environment variables and also by creating external fact files.
+* We then download this repository you're in now. We only want the puppet directory though really.
+* We put the Puppet and Hiera config files into place and the initial Puppetfile.
+* We install librarian-puppet and download the required Puppet modules.
+* Finally we run puppet apply.
 
-Puppet apply starts with site.pp. Site.pp uses the Hiera function hiera_include so we can define classes for each role/environment/etc in the Hiera data sources.
-The correct data sources (with classes and parameters) are found by Hiera using the Facter facts we defined at the command-line.
-Puppet now executes as normal.
+* Puppet apply starts with site.pp. Site.pp uses the Hiera function hiera_include so we can define classes for each role/environment/etc in the Hiera data sources.
+* The correct data sources (with classes and parameters) are found by Hiera using the Facter facts we defined at the command-line.
+* Puppet now executes as normal.
 
 TODO
 ----
