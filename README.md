@@ -7,11 +7,11 @@ It merely proves out a process.
 
 Problem statement
 -----------------
-Feature: Bootstrap initial Puppet run
-  In order to deploy configuration, services and applications to a new server instance
-  As an Ops Engineer or Developer
-  I want to insert a script at boot time that acquires the relevant configuration for that server instance
-  And initializes a Puppet run
+Feature: Bootstrap initial Puppet run  
+  In order to deploy configuration, services and applications to a new server instance  
+  As an Ops Engineer or Developer  
+  I want to insert a script at boot time that acquires the relevant configuration for that server instance  
+  And initializes a Puppet run  
 
 Design goals:
 * Must separate configuration data from code
