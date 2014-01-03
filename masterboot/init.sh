@@ -91,8 +91,8 @@ puppet apply -e "file { '/etc/puppet/Puppetfile': ensure => present, mode => 060
 
 gem install librarian-puppet
 cd /opt/config/puppet
-librarian-puppet install --verbose
-librarian-puppet update --verbose
+librarian-puppet install
+librarian-puppet update
 librarian-puppet show
 
 puppet apply --modulepath /opt/config/puppet/modules /opt/config/puppet/manifests/site.pp
