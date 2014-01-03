@@ -1,7 +1,7 @@
 Next-Gen Bootstrap Prototype
 ============================
 
-This repository contains a mechanism to effectively bootstrap a configuration
+This repository contains a mechanism to effectively bootstrap a configuration to a new server instance.  
 This is very much a work-in-progress and its functionality should not be taken to be production-ready.
 It merely proves out a process.
 
