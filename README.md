@@ -59,7 +59,7 @@ Execution
 
 TODO
 ----
-Chaining/ordering of class installation (?)
-Secure configuration data storage (Hiera GPG?)
-Management of Puppetfile (new module + ERB?)
-Advanced management of module dependencies (Modulefile with non-Forge dependencies allowed?)
+* Chaining/ordering of class installation (Puppet run stages)
+* Secure configuration data storage (Hiera GPG?)
+* Management of Puppetfile (new module + ERB?)
+* Advanced management of module dependencies (Modulefile with non-Forge dependencies allowed?)
