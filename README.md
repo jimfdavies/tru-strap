@@ -1,5 +1,5 @@
-Next-Gen Bootstrap Prototype
-============================
+"Tru-Strap" - Next-Gen Bootstrap Prototype 
+==========================================
 
 This repository contains a mechanism to effectively bootstrap a configuration to a new server instance.  
 This is very much a work-in-progress and its functionality should not be taken to be production-ready.
