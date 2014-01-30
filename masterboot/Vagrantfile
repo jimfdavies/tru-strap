@@ -3,8 +3,9 @@
 
 Vagrant.configure("2") do |config|
 
+  # This is an internally available box file but any Centos box would work.
+  # Publicly available ones are at http://www.vagrantbox.es/
   config.vm.box = "centos62-msm"
-  
   config.vm.box_url = "http://puppet/repo1/centos62-msm.box"
 
   config.vm.provision :shell, :path => "init.sh", :args => "--role webserver --environment prod1 --site eu-west-1a --repouser jimfdavies --reponame tru-strap"
