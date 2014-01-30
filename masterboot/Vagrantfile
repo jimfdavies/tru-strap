@@ -7,6 +7,6 @@ Vagrant.configure("2") do |config|
   
   config.vm.box_url = "http://puppet/repo1/centos62-msm.box"
 
-  config.vm.provision :shell, :path => "init.sh", :args => "--role webserver --environment prod1 --site eu-west-1a --repouser jimfdavies --reponame provtest-config"
+  config.vm.provision :shell, :path => "init.sh", :args => "--role webserver --environment prod1 --site eu-west-1a --repouser jimfdavies --reponame tru-strap"
 
 end
