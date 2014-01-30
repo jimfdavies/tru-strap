@@ -23,8 +23,8 @@ Design goals:
 The above scenario can used for testing the mechanism on a Vagrant machine.
 Install Vagrant http://www.vagrantup.com/
 
-    $ git clone https://github.com/jimfdavies/provtest-config.git
-    $ cd provtest-config/masterboot
+    $ git clone https://github.com/jimfdavies/tru-strap.git
+    $ cd tru-strap/masterboot
     $ vagrant up
     $ gem install cucumber
     $ cucumber features\bootstrap.feature
